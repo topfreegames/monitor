@@ -251,10 +251,10 @@
 {{ if .KAFKA_CONSUMER_TOPICS }}
 [[inputs.kafka_consumer]]
   topics = [{{ .KAFKA_CONSUMER_TOPICS }}]
-  zookeeper_peers = [{{ .KAFKA_CONSUMER_ZOOKEEPER_PEERS }}]
+  brokers = [{{ .KAFKA_CONSUMER_BROKERS }}]
   consumer_group = {{ .KAFKA_CONSUMER_GROUP | quote }}
-  point_buffer = {{ .KAFKA_CONSUMER_POINT_BUFFER }}
   offset = {{ .KAFKA_CONSUMER_OFFSET | quote }}
+  data_format = {{ default "influx" .NSQ_CONSUMER_DATA_FORMAT | quote }}
 {{ end }}
 
 {{ if .NSQ_CONSUMER_SERVER }}

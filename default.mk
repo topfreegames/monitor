@@ -3,8 +3,8 @@ SHELL := /bin/bash
 # all monitor components share/use the following targets/exports
 DOCKER_HOST = $(shell echo $$DOCKER_HOST)
 BUILD_TAG ?= git-$(shell git rev-parse --short HEAD)
-DEIS_REGISTRY ?= ${DEV_REGISTRY}
-IMAGE_PREFIX ?= deis
+DEIS_REGISTRY ?= quay.io/
+IMAGE_PREFIX ?= tfgco
 
 include ../includes.mk
 include ../versioning.mk
@@ -22,7 +22,7 @@ docker-build:
 
 clean: check-docker
 	docker rmi $(IMAGE)
-	
+
 test: test-style
 
 test-style:
